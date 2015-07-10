@@ -25,7 +25,7 @@ Or install it yourself as:
     Huanxin.configure do |config|
       config[:client_id]     = Your client id 
       config[:client_secret] = Your client secret 
-      #config[:host]          = 'https://a1.easemob.com'  可选配置，默认是 https://a1.easemob.com
+      #config[:host]         = 'https://a1.easemob.com'  可选配置，默认是 https://a1.easemob.com
     end 
 
 ## Development
