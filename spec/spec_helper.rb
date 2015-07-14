@@ -8,4 +8,13 @@ Huanxin.configure do |config|
   config[:host]          = 'https://a1.easemob.com'
 end 
 
+class HuanxinHelper
+  @cache ||= ActiveSupport::Cache::MemoryStore.new size: 10.megabytes
+  def self.cache 
+    @cache
+  end 
+  def self.client 
+    Huanxin::Client.new(@cache, ENV['HUANXIN_ORG_NAME'], ENV['HUANXIN_APP_NAME'])
+  end
+end
 #run bundle exec rspec spec

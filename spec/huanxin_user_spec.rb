@@ -1,17 +1,16 @@
 require 'spec_helper'
-
-describe Huanxin do 
+#run bundle exec rspec spec 
+describe "Huanxin User" do 
   before(:all) do 
-    @cache ||= ActiveSupport::Cache::MemoryStore.new size: 10.megabytes
-    @client = Huanxin::Client.new(@cache, ENV['HUANXIN_ORG_NAME'], ENV['HUANXIN_APP_NAME'])
+    @client   = HuanxinHelper.client
     @username = 'test_001'
     @password = 'test_pwd_001'
     @nickname = '牛叉叉'
   end 
-
-  it 'has a version number' do
-    expect(Huanxin::VERSION).not_to be nil
-  end
+    
+  #it 'has a version number' do
+    #expect(Huanxin::VERSION).not_to be nil
+  #end
 
   it 'can register user to huanxin' do 
     username, password = @client.register_by_name_pwd(@username, @password, @nickname)
@@ -45,7 +44,8 @@ describe Huanxin do
     rt = @client.delete_user(@username)
     expect(rt).not_to be nil 
     expect(rt["username"]).to eq(@username)
-  end
+  end 
+
 
   after(:all) do 
     @client.delete_user(@username)

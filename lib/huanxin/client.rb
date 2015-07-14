@@ -1,12 +1,18 @@
 require 'httparty'
+require 'huanxin/group' 
+require 'huanxin/chat_room' 
 
 module Huanxin 
 
   class Client < Huanxin::Base
 
+    include Huanxin::Group     
+    include Huanxin::ChatRoom  
+
     def initialize(cache_client, org_name, app_name)
       super(cache_client, org_name, app_name)
-    end
+    end 
+
     #注册用户到环信
     def register(user_id, nickname = nil)
       self.register_by_name_pwd(self.generate_username(user_id), self.generate_password(), nickname)
