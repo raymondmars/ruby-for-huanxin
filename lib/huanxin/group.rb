@@ -19,9 +19,10 @@ module Huanxin
       end 
     end 
     #修改群组信息
-    def modify_group(group_id, name, desc, maxusers = 200) 
+    def modify_group(group_id, name, desc, maxusers = nil) 
       token =    self.auth_token()
-      body  =    {groupname: name, description: desc,  maxusers: maxusers}
+      body  =    {groupname: name, description: desc}
+      body.merge!({maxusers: maxusers}) unless maxusers.nil?
 
       result = HTTParty.put("#{@head_url}/chatgroups/#{group_id}", 
           :body => body.to_json,

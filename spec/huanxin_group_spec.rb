@@ -6,7 +6,7 @@ describe "Huanxin Group" do
     @owner = 'amdin_001'
     @nickname = 'admin牛叉叉'
  
-    @client.register_by_name_pwd(@owner, '111111', @nickname)
+    #@client.register_by_name_pwd(@owner, '111111', @nickname)
 
     @group_name = '大家一起来吐槽'
     @group_desc = '提供一个大家吐槽的地方'
@@ -35,6 +35,6 @@ describe "Huanxin Group" do
   end 
 
   after(:all) do 
-    @client.delete_user(@owner)
+    #@client.delete_user(@owner)
   end
 end
