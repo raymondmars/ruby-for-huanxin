@@ -16,7 +16,7 @@ describe "Huanxin Group" do
     @group_id = @client.create_group(@group_name, @group_desc, @owner)
     expect(@group_id).not_to be nil 
 
-    new_group_name = "#{@group_name}_001"
+    new_group_name = "#{@group_name}_017"
 
     md = @client.modify_group(@group_id, new_group_name, @group_desc) 
     expect(md).not_to be nil 
@@ -31,6 +31,7 @@ describe "Huanxin Group" do
 
     expect(gpid).to eq(@group_id)
     expect(success).to eq(true)
+
 
   end 
 
