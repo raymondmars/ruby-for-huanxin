@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    huanxin (0.1.0)
+    huanxin (0.1.1)
 
 GEM
   remote: http://ruby.taobao.org/

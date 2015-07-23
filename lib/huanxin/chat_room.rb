@@ -18,9 +18,10 @@ module Huanxin
       end 
     end 
     #修改聊天室
-    def modify_chat_room(room_id, name, desc, maxusers) 
+    def modify_chat_room(room_id, name, desc, maxusers = nil) 
       token =    self.auth_token()
-      body  =    {name: name, description: desc,  maxusers: maxusers}
+      body  =    {name: name, description: desc} 
+      body.merge!({maxusers: maxusers}) unless maxusers.nil?
 
       result = HTTParty.put("#{@head_url}/chatrooms/#{room_id}", 
           :body => body.to_json,
@@ -40,7 +41,7 @@ module Huanxin
           :headers => { 'Content-Type' => 'application/json', 'Authorization'=>"Bearer #{token}" } )
 
       if result.response.code.to_i == 200
-        return result["data"] 
+        return result["data"][0] 
       else
         nil
       end 
